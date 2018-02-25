@@ -1,8 +1,14 @@
 import React from 'react';
 import Message from './Message.jsx';
 import Score from './Score.jsx';
+const axios = require('axios');
 
 export default class App extends React.Component {
+
+  componentWillMount() {
+    axios.get('/reviews/')
+  }
+
   render() {
     const fakeShip = faked.ship;
     return (

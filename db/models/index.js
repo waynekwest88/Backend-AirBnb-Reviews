@@ -35,6 +35,10 @@ function save(obj) {
  })
 }
 
+function load(cb) {
+  // TODO when loading from the database
+}
+
 db.on('open', () => {
   console.log('Successfully connected to mongo guest database');
 })
