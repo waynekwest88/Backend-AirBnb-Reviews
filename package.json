@@ -10,7 +10,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "start-server": "node server/index.js",
-    "seed": "node database/models/seed.js"
+    "seed": "node database/models/fake/seed.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
