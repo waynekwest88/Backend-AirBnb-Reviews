@@ -3,7 +3,7 @@ import React from 'react';
 // import Score from './Score.jsx';
 import axios from 'axios';
 
-export default class App extends React.Component {
+export default class Review extends React.Component {
   constructor(props) {
     super(props)
     this.state = {

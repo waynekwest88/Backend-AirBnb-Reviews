@@ -20,7 +20,7 @@ app.get("/reviews/:id", (req, res) => {
 app.get("/reviews", (req, res) => {
   db
     .findAllReviews()
-    .then(results => res.status(202).send(results[0]))
+    .then(results => res.status(202).send(results))
     .catch(e => console.log(`failed to retrieve from mongo ==> ${e}`));
 });
 
