@@ -38,8 +38,8 @@ const save = (obj) => {
     if (error) return console.log(error);
   });
 }
-const loadById = id => ReviewsModel.find({ id: id }).exec();
-const loadAll = id => ReviewsModel.find().exec();
+const loadById = (id) => ReviewsModel.find({ id: id });
+const loadAll = () => ReviewsModel.find();
 
 db.on("open", () => {
   console.log("Successfully connected to mongo guest database");

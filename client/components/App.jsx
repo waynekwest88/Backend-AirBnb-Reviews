@@ -27,4 +27,4 @@ export default class App extends React.Component {
   }
 }
 
-const faked = require('../../db/models/fakedata.JSON');
+// const faked = require('../../db/models/fakedata.JSON');

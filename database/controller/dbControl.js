@@ -2,7 +2,7 @@ const db = require("../models/index.js");
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/reviews");
 
-const findReviewById = reviewId => {
+const findReviewById = (reviewId) => {
   db.findReviewById(reviewId, (err, singleReview) => {
     if (err) {
       console.log(`failed to fetch data`);
