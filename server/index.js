@@ -7,11 +7,11 @@ let port = 3004;
 const filePath = path.join(__dirname, "../client/dist");
 
 app.use(express.static(filePath));
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 
 app.get("/reviews/:id", (req, res) => {
-  console.log(`going to ${filePath}`)
   const id = req.params.id;
   db
     .findReviewById(id)

@@ -1,22 +1,23 @@
-import React from 'react';
-// import Message from './Message.jsx';
+import React from "react";
+import Message from './Message.jsx';
 // import Score from './Score.jsx';
-import axios from 'axios';
+import axios from "axios";
 
 export default class Review extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      reviews: [],
-    }
+      reviews: []
+    };
   }
 
-  getSingleMessage() {
-    axios.get('/reviews')
-      .then(data => console.log(`fetching from server ==> ${data}`))
-      .catch(error => console.log(`4000000044 with ${error}`))
+  async getSingleMessage() {
+    const retrieved = await axios.get('/reviews');
+    await this.setState({reviews: retrieved.data})
+
+    console.log(this.state.reviews);
   }
-  
+
   componentWillMount() {
     this.getSingleMessage();
   }
@@ -24,9 +25,11 @@ export default class Review extends React.Component {
   render() {
     // const fakeShip = faked.ship;
     return (
-      <div style={{textAlign: 'center'}}>
-        <h1>Fake Review</h1>
-        </div>
-    )
+      <div style={{ textAlign: "center" }}>
+        {this.state.reviews.map(review =>
+          <Message message={review.message}/>
+        )}
+      </div>
+    );
   }
 }
