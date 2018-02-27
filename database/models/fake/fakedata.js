@@ -1,12 +1,21 @@
 const faker = require('faker')
 
-const User = {
-  name: faker.name.findName(),
-  accuarcy: faker.random.number({min:0, max:5}),
-  communication: faker.random.number({min:0, max:5}),
-  address: faker.address.streetAddress() + faker.address.city() + faker.address.country(),
-  bio: faker.lorem.sentences(),
-  image: faker.image.avatar()
+let randomYear = Math.floor(Math.random() * (2017 - 2013 + 1)) + 2013;
+
+
+const Guests = [];
+for (let i = 0; i < 200; i++) {
+  let User = {
+    id: i,
+    name: faker.name.findName(),
+    accuarcy: faker.random.number({min:0, max:5}),
+    communication: faker.random.number({min:0, max:5}),
+    cleaniness: faker.random.number({min:0, max:5}),
+    location: faker.random.number({min:0, max:5}),
+    checkin: faker.random.number({min:0, max:5}),
+    date: `${faker.date.month()} ${randomYear}`
+  }
+  Guests.push(User);
 }
 
-console.log(User);
+export default Guests
