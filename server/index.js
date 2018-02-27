@@ -1,15 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const db = require("../database/models/index");
-
+const path = require("path");
 let app = express();
 let port = 3004;
+const filePath = path.join(__dirname, "../client/dist");
 
-app.use(express.static(__dirname + "/client/"));
+app.use(express.static(filePath));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/reviews/:id", (req, res) => {
+  console.log(`going to ${filePath}`)
   const id = req.params.id;
   db
     .findReviewById(id)
