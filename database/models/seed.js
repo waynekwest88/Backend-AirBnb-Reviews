@@ -1,4 +1,5 @@
 const data = require("./fake/fakedata.js");
 const db = require("../index.js");
 
-db.save(data.fakeData);
+const faked = data.fakeData();
+faked.forEach(item => db.save(item));
