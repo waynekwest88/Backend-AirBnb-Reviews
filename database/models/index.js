@@ -38,13 +38,21 @@ const save = (obj) => {
     if (error) return console.log(error);
   });
 }
-const loadById = (id) => ReviewsModel.find({ id: id });
-const loadAll = () => ReviewsModel.find();
 
 db.on("open", () => {
   console.log("Successfully connected to mongo guest database");
 });
 
-module.exports.save = save;
-module.exports.loadAll = loadAll;
-module.exports.loadById = loadById;
+const findReviewById = (id) => {
+  return ReviewsModel.find({id: id});
+};
+
+const findAllReviews = () => {
+  return ReviewsModel.find();
+}
+
+module.exports = {
+  save,
+  findReviewById,
+  findAllReviews
+}
