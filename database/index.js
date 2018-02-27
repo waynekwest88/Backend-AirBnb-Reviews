@@ -13,10 +13,15 @@ const reviewSchema = mongoose.Schema({
   location: Number,
   checkin: Number,
   message: String,
-  date: {type: FormatDate, format: 'MM-DD', default: Date.now}
+  date: String
 })
 
-const Reviews = mongoose.model('Guest', guestSchema);
+const Reviews = mongoose.model('Guest', reviewSchema);
+
+/* 
+  id, name, accuracy, communication, cleaniness, location, checkin, message, date
+*/
+
 
 function save(obj) {
  const review = new Reviews({
@@ -48,4 +53,5 @@ db.on('open', () => {
   console.log('Successfully connected to mongo guest database');
 })
 
-module.exports.db = db;
+module.exports.save = save;
+module.exports.load = load;
