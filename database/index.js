@@ -1,9 +1,9 @@
 const mongoose = require('mongoose'),
       FormatDate = mongoose.Schema.Types.FormatDate = require('mongoose-schema-formatdate');
 const db = mongoose.connection;
-mongoose.connect('mongodb://localhost/guests');
+mongoose.connect('mongodb://localhost/reviews');
 
-const guestSchema = mongoose.Schema({
+const reviewSchema = mongoose.Schema({
   // TODO: my schemas here
   id: {type: Number, unique: true},
   guest_name: String,
@@ -16,10 +16,10 @@ const guestSchema = mongoose.Schema({
   date: {type: FormatDate, format: 'MM-DD', default: Date.now}
 })
 
-const Guest = mongoose.model('Guest', guestSchema);
+const Reviews = mongoose.model('Guest', guestSchema);
 
 function save(obj) {
- const guest = new Guest({
+ const review = new Reviews({
    id: obj.id,
    guest_name: obj.name,
    accuracy: obj.accuracy,
@@ -30,13 +30,18 @@ function save(obj) {
    message: obj.message,
    date: obj.date
  })
- guest.save((error) => {
+ review.save((error) => {
    if (error) return console.log(error);
  })
 }
 
-function load(cb) {
+function load(id, cb) {
   // TODO when loading from the database
+  Reviews.find({id: id}, (err, item) => {
+    if (err) console.log('having trouble finding the id in database');
+
+    cb(item);
+  })
 }
 
 db.on('open', () => {
