@@ -7,11 +7,11 @@ const loadIntoObj = () => {
     let User = {
       id: i,
       name: faker.name.findName(),
-      accuarcy: faker.random.number({min:0, max:5}),
       communication: faker.random.number({min:0, max:5}),
       cleaniness: faker.random.number({min:0, max:5}),
       location: faker.random.number({min:0, max:5}),
       checkin: faker.random.number({min:0, max:5}),
+      accuracy: faker.random.number({min:0, max:5}),
       message: faker.hacker.phrase(),
       date: `${faker.date.month()} ${randomYear}`
     }

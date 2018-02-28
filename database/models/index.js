@@ -48,7 +48,7 @@ const findReviewById = (id) => {
 };
 
 const findAllReviews = () => {
-  return ReviewsModel.find();
+  return ReviewsModel.find().limit(20);
 }
 
 module.exports = {

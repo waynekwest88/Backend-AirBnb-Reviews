@@ -1,6 +1,6 @@
 import React from "react";
 import Message from './Message';
-// import Score from './Score.jsx';
+import Score from './Score.jsx';
 import TotalReview from './TotalReview';
 import axios from "axios";
 
@@ -29,9 +29,10 @@ export default class Review extends React.Component {
       <div style={{ textAlign: "center" }}>
         {/* {this.state.reviews.map(review =>
           <Message message={review.message}/>
+          <Score accuracy={review.accuracy} 
+                 
+          />
         )} */}
-        <Message />
-        <TotalReview />
       </div>
     );
   }
