@@ -14,6 +14,7 @@ const reviewSchema = mongoose.Schema({
   checkin: Number,
   message: String,
   date: String,
+  image: String,
   value: Number
 });
 
@@ -34,6 +35,7 @@ const save = (obj) => {
     checkin: obj.checkin,
     message: obj.message,
     value: obj.value,
+    image: obj.image,
     date: obj.date
   });
   review.save(error => {

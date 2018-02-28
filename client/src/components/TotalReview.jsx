@@ -1,10 +1,10 @@
 import React from "react";
 
-const TotalReview = () => {
+const TotalReview = ({totalReviews}) => {
   var divStyle = {
     color: "purple",
     display: "inline-block",
-    width: "45%",
+    width: "100%",
     float: "left",
     'fontFamily': "Times New Roman",
     'fontSize': '25px'
@@ -12,7 +12,8 @@ const TotalReview = () => {
 
   return (
     <div id="staticReviewDiv" style={divStyle}>
-      <h6>Total Reviews: 200</h6>
+      <h6>Total Reviews: {totalReviews}</h6>
+      <input placeholder="Search Reviews"/>
     </div>
   );
 };

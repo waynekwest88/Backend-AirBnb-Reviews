@@ -22,6 +22,8 @@
     "faker": "^4.1.0",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^22.4.2",
+    "lodash.filter": "^4.6.0",
+    "lodash.includes": "^4.3.0",
     "mongoose": "^5.0.7",
     "mongoose-schema-formatdate": "^1.0.0",
     "path": "^0.12.7",

@@ -12,8 +12,9 @@ const loadIntoObj = () => {
       location: faker.random.number({min:0, max:5}),
       checkin: faker.random.number({min:0, max:5}),
       accuracy: faker.random.number({min:0, max:5}),
-      message: faker.hacker.phrase(),
+      message: `${faker.hacker.phrase()} ${faker.hacker.phrase()} ${faker.hacker.phrase()} ${faker.hacker.phrase()}`,
       date: `${faker.date.month()} ${randomYear}`,
+      image: faker.image.avatar(),
       value: faker.random.number({min:0, max:5})
     }
     guests.push(User);
