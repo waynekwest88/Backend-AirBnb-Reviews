@@ -3,7 +3,7 @@ import Message from "./Message";
 import Score from "./Score.jsx";
 import TotalReview from "./TotalReview";
 import axios from "axios";
-const includes = require("lodash.includes");
+
 export default class Review extends React.Component {
   constructor(props) {
     super(props);
@@ -44,7 +44,7 @@ export default class Review extends React.Component {
     });
   }
 
-  renderSearchTerm() {
+  renderSearchTerm(e) {
     // TODO: using the term, and filter out the correct messages
     this.state.reviews.filter(data => {
       console.log('trying real hard', data.message);
