@@ -8,7 +8,8 @@ export default class Review extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: []
+      reviews: [],
+      score:   []
     };
   }
 
@@ -27,12 +28,15 @@ export default class Review extends React.Component {
     // const fakeShip = faked.ship;
     return (
       <div style={{ textAlign: "center" }}>
-        {/* {this.state.reviews.map(review =>
+        <div>
+          <TotalReview />
+          </div>
+
+        <div>
+        {this.state.reviews.map(review =>
           <Message message={review.message}/>
-          <Score accuracy={review.accuracy} 
-                 
-          />
-        )} */}
+        )}
+        </div>
       </div>
     );
   }

@@ -13,7 +13,8 @@ const reviewSchema = mongoose.Schema({
   location: Number,
   checkin: Number,
   message: String,
-  date: String
+  date: String,
+  value: Number
 });
 
 const ReviewsModel = mongoose.model("Guest", reviewSchema);
@@ -32,6 +33,7 @@ const save = (obj) => {
     location: obj.location,
     checkin: obj.checkin,
     message: obj.message,
+    value: obj.value,
     date: obj.date
   });
   review.save(error => {
