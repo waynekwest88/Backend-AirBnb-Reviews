@@ -16,16 +16,14 @@ const ImageWrapper = styled.img`
   border-radius: 50%;
 `;
 
-const Message = ({ message, date, name, avatar }) => {
-
-
+const Message = (props) => {
   return (
     <MessageWrapper>
-      <ImageWrapper src={avatar} />
-      <span>{name}</span>
-      <span>{date}</span>
-      <span>{date}</span>
-      <span>{message}</span>
+      <ImageWrapper src={props.avatar} />
+      <span>{props.name}</span>
+      <span>{props.date}</span>
+      <span>{props.date}</span>
+      <span>{props.message}</span>
     </MessageWrapper>
   );
 };

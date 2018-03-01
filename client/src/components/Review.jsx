@@ -1,9 +1,8 @@
-import React from "react";
-import Message from "./Message";
-import Score from "./Score.jsx";
-import TotalReview from "./TotalReview";
-import axios from "axios";
-const includes = require("lodash.includes");
+import React from 'react';
+import Message from './Message';
+import Score from './Score.jsx';
+import HeaderBar from './HeaderBar';
+import axios from 'axios';
 
 export default class Review extends React.Component {
   constructor(props) {
@@ -17,12 +16,14 @@ export default class Review extends React.Component {
       cleaniness: 0,
       location: 0,
       totalReviews: 0,
-      hasSearched: false
+      hasSearched: false,
+      searchTerm: ''
     };
+    // this.renderSearchTerm.bind(this);
   }
 
   async retrieveMetaData() {
-    const retrieved = await axios.get("/reviews");
+    const retrieved = await axios.get('/reviews');
     await this.setState({
       reviews: retrieved.data,
       totalReviews: retrieved.data.length,
@@ -48,10 +49,7 @@ export default class Review extends React.Component {
 
   renderSearchTerm(e) {
     // TODO: using the term, and filter out the correct messages
-    const matchingMessage = this.state.reviews.filter(data =>
-      includes(data.message, e)
-    );
-    this.setState({ reviews: matchingMessage, hasSearched: true });
+    this.setState({ searchTerm: e.target.value });
   }
 
   componentWillMount() {
@@ -61,14 +59,18 @@ export default class Review extends React.Component {
   render() {
     const style = {
       scoreCard: {
-        marginLeft: "-8px",
-        marginRight: "-8px"
+        marginLeft: '-8px',
+        marginRight: '-8px'
       }
     };
     return (
       <div>
         <div>
-          <TotalReview totalReviews={this.state.totalReviews} />
+          <input
+            onChange={e => this.renderSearchTerm(e)}
+            type="text"
+            placeholder="Search Reviews"
+          />
         </div>
 
         <div className="scorecard" style={style.scoreCard}>
@@ -83,14 +85,19 @@ export default class Review extends React.Component {
         </div>
 
         <div id="messages">
-          {this.state.reviews.map(review => (
-            <Message
-              message={review.message}
-              date={review.date}
-              name={review.guest_name}
-              avatar={review.image}
-            />
-          ))}
+          {this.state.reviews
+            .filter(
+              review =>
+                `${review.message}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0
+            )
+            .map(review => (
+              <Message
+                message={review.message}
+                date={review.date}
+                name={review.guest_name}
+                avatar={review.image}
+              />
+            ))}
         </div>
       </div>
     );
