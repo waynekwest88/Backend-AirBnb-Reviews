@@ -3,6 +3,7 @@ import Message from "./Message";
 import Score from "./Score.jsx";
 import TotalReview from "./TotalReview";
 import axios from "axios";
+const includes = require("lodash.includes");
 
 export default class Review extends React.Component {
   constructor(props) {
@@ -15,7 +16,8 @@ export default class Review extends React.Component {
       value: 0,
       cleaniness: 0,
       location: 0,
-      totalReviews: 0
+      totalReviews: 0,
+      hasSearched: false
     };
   }
 
@@ -46,10 +48,10 @@ export default class Review extends React.Component {
 
   renderSearchTerm(e) {
     // TODO: using the term, and filter out the correct messages
-    this.state.reviews.filter(data => {
-      console.log('trying real hard', data.message);
-    });
-    // console.log(`returning this obj ==> ${filteredObj}`);
+    const matchingMessage = this.state.reviews.filter(data =>
+      includes(data.message, e)
+    );
+    this.setState({ reviews: matchingMessage, hasSearched: true });
   }
 
   componentWillMount() {
