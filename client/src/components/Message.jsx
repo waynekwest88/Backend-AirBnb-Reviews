@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 const MessageWrapper = styled.div`
   color: #484848;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   line-height: 22px;
   font-weight: 300;
   font-size: 17px;
@@ -16,7 +17,7 @@ const ImageWrapper = styled.img`
   border-radius: 50%;
 `;
 
-const Message = (props) => {
+const Message = props => {
   return (
     <MessageWrapper>
       <ImageWrapper src={props.avatar} />
@@ -29,8 +30,6 @@ const Message = (props) => {
 };
 
 export default Message;
-
-
 
 // const style = {
 //   divStyle: {
