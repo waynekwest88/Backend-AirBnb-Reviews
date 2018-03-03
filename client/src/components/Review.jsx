@@ -2,11 +2,13 @@ import React from 'react';
 import Message from './Message';
 import Score from './Score.jsx';
 import HeaderBar from './HeaderBar';
+import BlankSearch from './BlankSearch.jsx';
 import axios from 'axios';
 
 export default class Review extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       reviews: [],
       accuracy: 0,
@@ -20,6 +22,10 @@ export default class Review extends React.Component {
       searchTerm: ''
     };
     // this.renderSearchTerm.bind(this);
+    // this.clearSearch.bind(this);
+    /* 
+      Bind is costly on rendering, how to make this work
+    */
   }
 
   async retrieveMetaData() {
@@ -52,20 +58,12 @@ export default class Review extends React.Component {
     this.setState({ searchTerm: e.target.value });
   }
 
-  componentWillMount() {
-    this.retrieveMetaData();
+  clearSearch() {
+    this.setState({ searchTerm: '' });
   }
 
-  renderBlankWhenNoMessage() {
-    return (
-      <div>
-        <div>
-          <span>
-            <h1>None of our guests have mentioned “derpderp”</h1>
-          </span>
-        </div>
-      </div>
-    );
+  componentWillMount() {
+    this.retrieveMetaData();
   }
 
   filteredMessages() {
@@ -75,26 +73,6 @@ export default class Review extends React.Component {
           .toUpperCase()
           .indexOf(this.state.searchTerm.toUpperCase()) >= 0
     );
-  }
-
-  renderDependingOnLengthOfMessage() {
-    const messageObj = this.state.reviews.filter(
-      review =>
-        `${review.message}`
-          .toUpperCase()
-          .indexOf(this.state.searchTerm.toUpperCase()) >= 0
-    );
-    if (messageObj.length > 0) {
-      return messageObj.map(review => (
-        <Message
-          message={review.message}
-          date={review.date}
-          name={review.guest_name}
-          avatar={review.image}
-        />
-      ));
-    }
-    return this.renderBlankWhenNoMessage();
   }
 
   render() {
@@ -137,33 +115,10 @@ export default class Review extends React.Component {
               />
             ))
           ) : (
-            <div>
-              <span>
-                <h1>hello world</h1>
-              </span>
-            </div>
+            <BlankSearch searchTerm={this.state.searchTerm} clearSearch={this.clearSearch.bind(this)}/>
           )}
         </div>
       </div>
     );
   }
 }
-
-/* 
-goes inside div id messages
-{this.state.reviews
-  .filter(
-    review =>
-      `${review.message}`
-        .toUpperCase()
-        .indexOf(this.state.searchTerm.toUpperCase()) >= 0
-  )
-  .map(review => (
-    <Message
-      message={review.message}
-      date={review.date}
-      name={review.guest_name}
-      avatar={review.image}
-    />
-  ))} 
-  */

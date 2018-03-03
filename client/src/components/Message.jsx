@@ -20,11 +20,14 @@ const ImageWrapper = styled.img`
 const Message = props => {
   return (
     <MessageWrapper>
-      <ImageWrapper src={props.avatar} />
-      <span>{props.name}</span>
-      <span>{props.date}</span>
-      <span>{props.date}</span>
-      <span>{props.message}</span>
+      <div>
+        <ImageWrapper src={props.avatar} />
+        <span>{props.name}</span>
+        <span>{props.date}</span>
+      </div>
+      <div>
+        <span>{props.message}</span>
+      </div>
     </MessageWrapper>
   );
 };

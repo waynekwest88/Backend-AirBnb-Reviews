@@ -52,7 +52,7 @@ const findReviewById = (id) => {
 };
 
 const findAllReviews = () => {
-  return ReviewsModel.find().limit(20);
+  return ReviewsModel.find();
 }
 
 module.exports = {
