@@ -56,6 +56,47 @@ export default class Review extends React.Component {
     this.retrieveMetaData();
   }
 
+  renderBlankWhenNoMessage() {
+    return (
+      <div>
+        <div>
+          <span>
+            <h1>None of our guests have mentioned “derpderp”</h1>
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  filteredMessages() {
+    return this.state.reviews.filter(
+      review =>
+        `${review.message}`
+          .toUpperCase()
+          .indexOf(this.state.searchTerm.toUpperCase()) >= 0
+    );
+  }
+
+  renderDependingOnLengthOfMessage() {
+    const messageObj = this.state.reviews.filter(
+      review =>
+        `${review.message}`
+          .toUpperCase()
+          .indexOf(this.state.searchTerm.toUpperCase()) >= 0
+    );
+    if (messageObj.length > 0) {
+      return messageObj.map(review => (
+        <Message
+          message={review.message}
+          date={review.date}
+          name={review.guest_name}
+          avatar={review.image}
+        />
+      ));
+    }
+    return this.renderBlankWhenNoMessage();
+  }
+
   render() {
     const style = {
       scoreCard: {
@@ -63,6 +104,7 @@ export default class Review extends React.Component {
         marginRight: '-8px'
       }
     };
+    const messageObj = this.filteredMessages();
     return (
       <div>
         <div>
@@ -85,21 +127,43 @@ export default class Review extends React.Component {
         </div>
 
         <div id="messages">
-          {this.state.reviews
-            .filter(
-              review =>
-                `${review.message}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0
-            )
-            .map(review => (
+          {messageObj.length > 0 ? (
+            messageObj.map(review => (
               <Message
                 message={review.message}
                 date={review.date}
                 name={review.guest_name}
                 avatar={review.image}
               />
-            ))}
+            ))
+          ) : (
+            <div>
+              <span>
+                <h1>hello world</h1>
+              </span>
+            </div>
+          )}
         </div>
       </div>
     );
   }
 }
+
+/* 
+goes inside div id messages
+{this.state.reviews
+  .filter(
+    review =>
+      `${review.message}`
+        .toUpperCase()
+        .indexOf(this.state.searchTerm.toUpperCase()) >= 0
+  )
+  .map(review => (
+    <Message
+      message={review.message}
+      date={review.date}
+      name={review.guest_name}
+      avatar={review.image}
+    />
+  ))} 
+  */
