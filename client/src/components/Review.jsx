@@ -4,6 +4,8 @@ import Score from './Score.jsx';
 import HeaderBar from './HeaderBar';
 import BlankSearch from './BlankSearch.jsx';
 import axios from 'axios';
+import ReactPaginate from 'react-paginate';
+import $ from 'jquery';
 
 export default class Review extends React.Component {
   constructor(props) {
@@ -55,11 +57,17 @@ export default class Review extends React.Component {
 
   renderSearchTerm(e) {
     // TODO: using the term, and filter out the correct messages
+    // const search = $('#searchbar')
+    console.log(`search is this ==> ${e.target}`)
     this.setState({ searchTerm: e.target.value });
   }
 
   clearSearch() {
-    this.setState({ searchTerm: '' });
+
+    this.setState({ searchTerm: '' }, () => {
+      // $('#searchbar').val('');
+      $('searchbar').val('');
+    });
   }
 
   componentWillMount() {

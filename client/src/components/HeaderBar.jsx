@@ -12,7 +12,6 @@ export default class HeaderBar extends React.Component {
   constructor(props) {
     super(props);
   }
-  
 
   render() {
     return (
@@ -25,6 +24,7 @@ export default class HeaderBar extends React.Component {
         <span>☆</span>
         <span>
           <input
+            id='searchbar'
             onChange={e => this.props.handleSearch(e)}
             type="text"
             placeholder="Search Reviews"
