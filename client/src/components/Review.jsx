@@ -58,12 +58,11 @@ export default class Review extends React.Component {
   renderSearchTerm(e) {
     // TODO: using the term, and filter out the correct messages
     // const search = $('#searchbar')
-    console.log(`search is this ==> ${e.target}`)
+    console.log(`search is this ==> ${e.target}`);
     this.setState({ searchTerm: e.target.value });
   }
 
   clearSearch() {
-
     this.setState({ searchTerm: '' }, () => {
       // $('#searchbar').val('');
       $('searchbar').val('');
@@ -114,7 +113,21 @@ export default class Review extends React.Component {
 
         <div id="messages">
           {messageObj.length > 0 ? (
-            messageObj.map(review => (
+            <Message msgObj={messageObj} />
+          ) : (
+            <BlankSearch
+              searchTerm={this.state.searchTerm}
+              clearSearch={this.clearSearch.bind(this)}
+            />
+          )}
+        </div>
+      </div>
+    );
+  }
+}
+
+{
+  /* messageObj.map(review => (
               <Message
                 message={review.message}
                 date={review.date}
@@ -122,11 +135,5 @@ export default class Review extends React.Component {
                 avatar={review.image}
               />
             ))
-          ) : (
-            <BlankSearch searchTerm={this.state.searchTerm} clearSearch={this.clearSearch.bind(this)}/>
-          )}
-        </div>
-      </div>
-    );
-  }
+          ) */
 }

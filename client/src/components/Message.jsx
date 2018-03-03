@@ -17,26 +17,25 @@ const ImageWrapper = styled.img`
   border-radius: 50%;
 `;
 
-const Message = props => {
-  return (
+const Message = ({ msgObj }) => {
+  return msgObj.map(review => (
     <MessageWrapper>
       <div>
-        <ImageWrapper src={props.avatar} />
-        <span>{props.name}</span>
-        <span>{props.date}</span>
+        <ImageWrapper src={review.image} />
+        <span>{review.guest_name}</span>
+        <span>{review.date}</span>
       </div>
       <div>
-        <span>{props.message}</span>
+        <span>{review.message}</span>
       </div>
     </MessageWrapper>
-  );
+  ));
 };
 
 export default Message;
 
-
-
-    {/* <MessageWrapper>
+{
+  /* <MessageWrapper>
       <div>
         <ImageWrapper src={props.avatar} />
         <span>{props.name}</span>
@@ -45,4 +44,9 @@ export default Message;
       <div>
         <span>{props.message}</span>
       </div>
-    </MessageWrapper> */}
+    </MessageWrapper> */
+}
+
+// date={review.date}
+// name={review.guest_name}
+// avatar={review.image}
