@@ -34,19 +34,15 @@ const Message = props => {
 
 export default Message;
 
-// const style = {
-//   divStyle: {
-//     color: '#484848',
-//     fontFamily:
-//       'Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif',
-//     lineHeight: '22px',
-//     fontWeight: 300,
-//     fontSize: '17px',
-//     display: 'block'
-//   },
-//   imgStyle: {
-//     width: '48px',
-//     height: '48px',
-//     borderRadius: '50%'
-//   }
-// };
+
+
+    {/* <MessageWrapper>
+      <div>
+        <ImageWrapper src={props.avatar} />
+        <span>{props.name}</span>
+        <span>{props.date}</span>
+      </div>
+      <div>
+        <span>{props.message}</span>
+      </div>
+    </MessageWrapper> */}
