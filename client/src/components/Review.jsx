@@ -57,16 +57,12 @@ export default class Review extends React.Component {
 
   renderSearchTerm(e) {
     // TODO: using the term, and filter out the correct messages
-    // const search = $('#searchbar')
-    console.log(`search is this ==> ${e.target}`);
     this.setState({ searchTerm: e.target.value });
   }
 
   clearSearch() {
-    this.setState({ searchTerm: '' }, () => {
-      // $('#searchbar').val('');
-      $('searchbar').val('');
-    });
+    // TODO: clear the #searchbar value
+    this.setState({ searchTerm: '' });
   }
 
   componentWillMount() {
