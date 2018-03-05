@@ -1,11 +1,11 @@
 import React from 'react';
-import Message from './Message';
+import ReviewList from './ReviewList';
 import Score from './Score.jsx';
 import HeaderBar from './HeaderBar';
 import BlankSearch from './BlankSearch.jsx';
 import axios from 'axios';
-import ReactPaginate from 'react-paginate';
 import $ from 'jquery';
+import _ from 'lodash';
 
 export default class Review extends React.Component {
   constructor(props) {
@@ -22,8 +22,11 @@ export default class Review extends React.Component {
       totalReviews: 0,
       hasSearched: false,
       searchTerm: '',
-      offset: 0
+      offset: 0,
+      pageofItem: []
     };
+    // renderSearchTerm = this.renderSearchTerm.bind(this);
+    this.clearSearch = this.clearSearch.bind(this);
     // this.renderSearchTerm.bind(this);
     // this.clearSearch.bind(this);
     /* 
@@ -33,13 +36,7 @@ export default class Review extends React.Component {
   }
 
   async retrieveMetaData() {
-    // const retrieved = await axios.get('/reviews');
-    const retrieved = await axios({
-      method: 'get',
-      url: '/reviews',
-      maxContentLength: 10
-    });
-    console.log(`retriving data ==> ${retrieved.data}`);
+    const retrieved = await axios.get('/reviews');
     await this.setState({
       reviews: retrieved.data,
       totalReviews: retrieved.data.length,
@@ -60,27 +57,21 @@ export default class Review extends React.Component {
       location:
         retrieved.data.reduce((a, b) => a + b.location, 0) /
         retrieved.data.length
-    });
+    }, () => console.log(`current objects ahve this ==> ${this.state.reviews.length}`));
   }
 
   renderSearchTerm(e) {
     // TODO: using the term, and filter out the correct messages
-    this.setState({ searchTerm: e.target.value });
+    this.setState({ searchTerm: e.target.value, hasSearched: true });
   }
 
   clearSearch() {
-    // TODO: clear the #searchbar value
-    this.setState({ searchTerm: '' });
-  }
-
-  handlePageClick(data) {
-    let selected = data.selected;
-    console.log(`selected is this ?? ${selected}`);
-    let offset = Math.ceil(selected * 10);
-
-    this.setState({ offset: offset }, () => {
-      this.retrieveMetaData();
-    });
+    if (this.state.hasSearched) {
+      this.setState({ hasSearched: false, searchTerm: '' }, () => {
+        $('searchbar').val('');
+        console.log($('#searchbar').val())
+      });
+    }
   }
 
   componentWillMount() {
@@ -104,20 +95,6 @@ export default class Review extends React.Component {
       }
     };
     const messageObj = this.filteredMessages();
-    const paginate = (
-      <ReactPaginate
-        previousLabel={'previous'}
-        nextLabel={'next'}
-        breakLabel={<a href=""> ++++ </a>}
-        pageCount={10}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={10}
-        onPageChange={this.handlePageClick.bind(this)}
-        containerClassName={'pagination'}
-        subContainerClassName={'pages pagination'}
-        activeClassName={'active'}
-      />
-    );
     return (
       <div>
         <div>
@@ -142,13 +119,12 @@ export default class Review extends React.Component {
         <div id="messages">
           {messageObj.length > 0 ? (
             <div>
-              <Message msgObj={messageObj} />
-              {paginate}
+              <ReviewList reviews={messageObj} />
             </div>
           ) : (
             <BlankSearch
               searchTerm={this.state.searchTerm}
-              clearSearch={this.clearSearch.bind(this)}
+              clearSearch={this.clearSearch}
             />
           )}
         </div>

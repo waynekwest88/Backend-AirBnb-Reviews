@@ -27,7 +27,7 @@ export default class HeaderBar extends React.Component {
         <span>
           <input
             id='searchbar'
-            onChange={e => _.debounce(this.props.handleSearch(e), 1000)}
+            onChange={e => _.debounce(this.props.handleSearch(e), 3000)}
             type="text"
             placeholder="Search Reviews"
           />

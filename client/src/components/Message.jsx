@@ -33,20 +33,3 @@ const Message = ({ msgObj }) => {
 };
 
 export default Message;
-
-{
-  /* <MessageWrapper>
-      <div>
-        <ImageWrapper src={props.avatar} />
-        <span>{props.name}</span>
-        <span>{props.date}</span>
-      </div>
-      <div>
-        <span>{props.message}</span>
-      </div>
-    </MessageWrapper> */
-}
-
-// date={review.date}
-// name={review.guest_name}
-// avatar={review.image}

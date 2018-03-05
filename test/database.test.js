@@ -6,28 +6,28 @@ mongoose.connect('mongodb://localhost/productDetails');
 describe('Tests for database', () => {
   it('should be able to retrieve existing dummy data', () => {
     Reviews.findAllReviews()
-      .then((results) => {
+      .then(results => {
         expect(results).toBeInstanceOf(Array);
         expect(results.length).toBeGreaterThan(0);
       })
-      .catch((e) => {
+      .catch(e => {
         console.log(e);
       });
   });
 
   it('should retrieve review given an id', () => {
     Reviews.findReviewById(1)
-      .then((product) => {
+      .then(product => {
         expect(product).toHaveProperty('id', 1);
       })
-      .catch((e) => {
+      .catch(e => {
         console.log(e);
       });
   });
 
   it('retrieved data should have correct properties', () => {
     Reviews.findReviewById(1)
-      .then((review) => {
+      .then(review => {
         expect(review).toHaveProperty('id');
         expect(review).toHaveProperty('gueset_name');
         expect(review).toHaveProperty('communication');
@@ -37,7 +37,7 @@ describe('Tests for database', () => {
         expect(review).toHaveProperty('message');
         expect(review).toHaveProperty('date');
       })
-      .catch((e) => {
+      .catch(e => {
         console.log(e);
       });
   });
