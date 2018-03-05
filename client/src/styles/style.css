@@ -1,0 +1,72 @@
+body {
+  color: #484848;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  margin: 0px;
+  word-wrap: break-word;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  font-weight: 300;
+  display: inline;
+}
+
+.ReviewsCount {
+  font-weight: 700;
+  margin: 0px;
+  word-wrap: break-word;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  color: #484848;
+  font-size: 25px;
+  line-height: 30px;
+  letter-spacing: -0.6px;
+}
+
+.profilePhoto {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  margin-right: 15px;
+}
+
+.username {
+  font-weight: 400;
+  color: #484848;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  margin: 0px;
+  word-wrap: break-word;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  letter-spacing: 0.2px;
+  font-size-adjust: 100%;
+  box-sizing: border-box;
+}
+
+.reviewDate {
+  box-sizing: border-box;
+  margin: 0px;
+  word-wrap: break-word;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  color: #484848;
+  font-weight: 300;
+  font-size-adjust: 100%;
+
+}
+
+.user {
+  margin: 15px;
+}
+
+.review {
+  margin: 30px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgb(220, 224, 224);
+}
