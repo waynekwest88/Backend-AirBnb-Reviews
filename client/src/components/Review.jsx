@@ -21,17 +21,25 @@ export default class Review extends React.Component {
       location: 0,
       totalReviews: 0,
       hasSearched: false,
-      searchTerm: ''
+      searchTerm: '',
+      offset: 0
     };
     // this.renderSearchTerm.bind(this);
     // this.clearSearch.bind(this);
     /* 
       Bind is costly on rendering, how to make this work
     */
+    // this.handlePageClick.bind(this);
   }
 
   async retrieveMetaData() {
-    const retrieved = await axios.get('/reviews');
+    // const retrieved = await axios.get('/reviews');
+    const retrieved = await axios({
+      method: 'get',
+      url: '/reviews',
+      maxContentLength: 10
+    });
+    console.log(`retriving data ==> ${retrieved.data}`);
     await this.setState({
       reviews: retrieved.data,
       totalReviews: retrieved.data.length,
@@ -65,6 +73,16 @@ export default class Review extends React.Component {
     this.setState({ searchTerm: '' });
   }
 
+  handlePageClick(data) {
+    let selected = data.selected;
+    console.log(`selected is this ?? ${selected}`);
+    let offset = Math.ceil(selected * 10);
+
+    this.setState({ offset: offset }, () => {
+      this.retrieveMetaData();
+    });
+  }
+
   componentWillMount() {
     this.retrieveMetaData();
   }
@@ -86,6 +104,20 @@ export default class Review extends React.Component {
       }
     };
     const messageObj = this.filteredMessages();
+    const paginate = (
+      <ReactPaginate
+        previousLabel={'previous'}
+        nextLabel={'next'}
+        breakLabel={<a href=""> ++++ </a>}
+        pageCount={10}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={10}
+        onPageChange={this.handlePageClick.bind(this)}
+        containerClassName={'pagination'}
+        subContainerClassName={'pages pagination'}
+        activeClassName={'active'}
+      />
+    );
     return (
       <div>
         <div>
@@ -109,7 +141,10 @@ export default class Review extends React.Component {
 
         <div id="messages">
           {messageObj.length > 0 ? (
-            <Message msgObj={messageObj} />
+            <div>
+              <Message msgObj={messageObj} />
+              {paginate}
+            </div>
           ) : (
             <BlankSearch
               searchTerm={this.state.searchTerm}

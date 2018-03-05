@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import _ from 'lodash';
+
 const ReviewDiv = styled.div`
   color: purple;
   display: inline-block;
@@ -25,7 +27,7 @@ export default class HeaderBar extends React.Component {
         <span>
           <input
             id='searchbar'
-            onChange={e => this.props.handleSearch(e)}
+            onChange={e => _.debounce(this.props.handleSearch(e), 1000)}
             type="text"
             placeholder="Search Reviews"
           />
