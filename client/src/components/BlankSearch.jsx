@@ -1,20 +1,19 @@
 import React from 'react';
 import $ from 'jquery';
 
-const BlankSearch = props => {
-  const clear = () => {
-    $(':input').removeAttr('value');
-  } 
+const BlankSearch = ({ searchReviews }) => {
   return (
     <div>
-      <h1>No result for "{props.searchTerm}"</h1>
-      <button
-        onClick={() => {
-          props.clearSearch();
+      <input
+        className="searchInput"
+        type="text"
+        placeholder="Search reviews"
+        onKeyUp={event => {
+          if (event.keyCode === 13) {
+            searchReviews($(event.target).val());
+          }
         }}
-      >
-        Back to all reviews
-      </button>
+      />
     </div>
   );
 };

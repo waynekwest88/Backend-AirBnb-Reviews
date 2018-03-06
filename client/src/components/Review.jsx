@@ -9,9 +9,9 @@ import $ from 'jquery';
 export default class Review extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      reviews: [],
+      reviews: null,
+      searchResultsArray: null,
       accuracy: 0,
       communication: 0,
       checkin: 0,
@@ -20,16 +20,11 @@ export default class Review extends React.Component {
       location: 0,
       totalReviews: 0,
       hasSearched: false,
-      searchTerm: ''
+      searchTerm: null
     };
-    // renderSearchTerm = this.renderSearchTerm.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
     this.renderSearchTerm = this.renderSearchTerm.bind(this);
-    // this.clearSearch.bind(this);
-    /* 
-      Bind is costly on rendering, how to make this work
-    */
-    // this.handlePageClick.bind(this);
+    this.searchReviews = this.searchReviews.bind(this);
   }
 
   async retrieveMetaData() {
@@ -70,54 +65,93 @@ export default class Review extends React.Component {
   }
 
   clearSearch() {
-    if (this.state.hasSearched) {
-      this.setState({ hasSearched: false, searchTerm: '' }, () => {
-        $(':input').val('');
-        console.log($('#searchbar').val());
-      });
-    }
+    this.setState({ searchResultsArray: null, searchTerm: null });
+    $(':input').val('');
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.retrieveMetaData();
   }
 
-  filteredMessages() {
-    return this.state.reviews.filter(
-      review =>
-        `${review.message}`
-          .toUpperCase()
-          .indexOf(this.state.searchTerm.toUpperCase()) >= 0
-    );
+  searchReviews(queryString) {
+    this.setState({ searchTerm: queryString });
+    const reviewArr = [];
+    this.state.reviews.filter(review => {
+      if (
+        `${review.message}`.toUpperCase().indexOf(queryString.toUpperCase()) >=
+        0
+      )
+        reviewArr.push(review);
+    });
+    this.setState({ searchResultsArray: reviewArr });
   }
 
   render() {
-    const messageObj = this.filteredMessages();
-    return (
-      <div className="reviews">
-        <HeaderBar totalReviews={this.state.totalReviews} />
+    if (this.state.reviews) {
+      return (
+        <div className="reviews">
+          <HeaderBar totalReviews={this.state.totalReviews} />
 
-        <div>
-          <input
-            id="searchbar"
-            onChange={this.renderSearchTerm}
-            type="text"
-            placeholder="Search Reviews"
-          />
+          <div>
+            <BlankSearch searchReviews={this.searchReviews} />
+          </div>
+
+          <div className="scorecard">
+            <Score
+              accuracy={this.state.accuracy}
+              communication={this.state.communication}
+              value={this.state.value}
+              location={this.state.location}
+              cleaniness={this.state.cleaniness}
+              checkin={this.state.checkin}
+            />
+          </div>
+
+          <div id="messages">
+            <div>
+              <ReviewList reviews={this.state.reviews} />
+            </div>
+          </div>
         </div>
+      );
+    } else if (this.state.searchResultsArray) {
+      return (
+        <div className="searchreviews">
+          <HeaderBar totalReviews={this.state.totalReviews} />
 
-        <div className="scorecard">
-          <Score
-            accuracy={this.state.accuracy}
-            communication={this.state.communication}
-            value={this.state.value}
-            location={this.state.location}
-            cleaniness={this.state.cleaniness}
-            checkin={this.state.checkin}
-          />
+          <div>
+            <input
+              id="searchbar"
+              onChange={this.renderSearchTerm}
+              type="text"
+              placeholder="Search Reviews"
+            />
+          </div>
+
+          <div className="scorecard">
+            <Score
+              accuracy={this.state.accuracy}
+              communication={this.state.communication}
+              value={this.state.value}
+              location={this.state.location}
+              cleaniness={this.state.cleaniness}
+              checkin={this.state.checkin}
+            />
+          </div>
+
+          <div id="messages">
+            <div>
+              <ReviewList reviews={this.state.reviews} />
+            </div>
+          </div>
         </div>
-
-        <div id="messages">
+      );
+    }
+    return <div>Loading....</div>;
+  }
+}
+/* 
+<div id="messages">
           {messageObj.length > 0 ? (
             <div>
               <ReviewList reviews={messageObj} />
@@ -128,8 +162,4 @@ export default class Review extends React.Component {
               clearSearch={this.clearSearch}
             />
           )}
-        </div>
-      </div>
-    );
-  }
-}
+        </div> */
