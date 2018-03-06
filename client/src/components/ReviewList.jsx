@@ -13,6 +13,10 @@ export default class ReviewList extends React.Component {
     this.updateCurrentPage = this.updateCurrentPage.bind(this);
   }
 
+  componentWillReceiveProps() {
+    
+  }
+
   updateCurrentPage(newPage) {
     this.setState({ currentPage: newPage }, () => {
       this.updateDisplayedReview();

@@ -24,7 +24,7 @@ export default class Review extends React.Component {
     };
     // renderSearchTerm = this.renderSearchTerm.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
-    // this.renderSearchTerm.bind(this);
+    this.renderSearchTerm = this.renderSearchTerm.bind(this);
     // this.clearSearch.bind(this);
     /* 
       Bind is costly on rendering, how to make this work
@@ -92,27 +92,21 @@ export default class Review extends React.Component {
   }
 
   render() {
-    const style = {
-      scoreCard: {
-        marginLeft: '-8px',
-        marginRight: '-8px'
-      }
-    };
     const messageObj = this.filteredMessages();
     return (
       <div className="reviews">
-        <HeaderBar totalReviews={this.state.totalReviews}/>
+        <HeaderBar totalReviews={this.state.totalReviews} />
 
         <div>
           <input
             id="searchbar"
-            onChange={e => this.renderSearchTerm(e)}
+            onChange={this.renderSearchTerm}
             type="text"
             placeholder="Search Reviews"
           />
         </div>
 
-        <div className="scorecard" style={style.scoreCard}>
+        <div className="scorecard">
           <Score
             accuracy={this.state.accuracy}
             communication={this.state.communication}

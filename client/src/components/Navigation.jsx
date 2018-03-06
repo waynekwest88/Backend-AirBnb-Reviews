@@ -19,7 +19,7 @@ const Navigation = props => {
     buttons.push(newBtn);
   }
   return (
-    <nav aria-label="reviews navigation">
+    <nav className='navbar' aria-label="reviews navigation">
       <ul className="pagination">{buttons}</ul>
     </nav>
   );
