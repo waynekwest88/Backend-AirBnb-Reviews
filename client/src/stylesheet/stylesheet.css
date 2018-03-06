@@ -1,6 +1,6 @@
 body {
-  color: blue;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  /* color:#2cb5b4; */
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   margin: 0px;
   word-wrap: break-word;
   font-size: 17px;
@@ -8,6 +8,39 @@ body {
   letter-spacing: 0.2px;
   font-weight: 300;
   display: inline;
+  /* background-color: #cccccc; */
+}
+
+.scorecard {
+  display: flex;
+  justify-content: center;
+  width: 1100px;
+  height: 100px;
+}
+
+.col-s-2 {
+  float: left;
+}
+
+.container .user {
+  margin: 0px;
+}
+
+.bigscorecard {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 1000px;
+  height: 100px;
+}
+
+.subrating {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  height: 30px;
+  align-items: center;
 }
 
 .ReviewsCount {

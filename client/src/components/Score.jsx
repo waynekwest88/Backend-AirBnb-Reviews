@@ -2,7 +2,7 @@ import React from 'react';
 import IndividualRating from './IndividualRating';
 
 const Score = props => (
-  <div>
+  <div className='bigscorecard'>
     <IndividualRating category="Accuracy" rating={props.accuracy} />
     <IndividualRating category="Check In" rating={props.checkIn} />
     <IndividualRating category="Cleanliness" rating={props.cleanliness} />
