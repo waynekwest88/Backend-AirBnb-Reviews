@@ -1,67 +1,17 @@
 import React from 'react';
+import IndividualRating from './IndividualRating';
 
-const Score = ({
-  accuracy,
-  communication,
-  value,
-  location,
-  cleaniness,
-  checkin
-}) => {
-  return (
-    <span>
-      <span style={{ display: 'inline-block' }}>
-        <span>
-          accuracy: {accuracy}
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-        </span>
-        <span>
-          communication: {communication}
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-        </span>
-        <span>
-          value: {value}
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-        </span>
-        <span>
-          location: {location}
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-        </span>
-        <span>
-          cleaniness: {cleaniness}
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-        </span>
-        <span>
-          checkin: {checkin}
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-          <span>☆</span>
-        </span>
-      </span>
-    </span>
-  );
-};
+const Score = props => (
+  <div>
+    <IndividualRating category="Accuracy" rating={props.accuracy} />
+    <IndividualRating category="Check In" rating={props.checkIn} />
+    <IndividualRating category="Cleanliness" rating={props.cleanliness} />
+    <IndividualRating category="Communication" rating={props.communication} />
+    <IndividualRating category="Location" rating={props.location} />
+    <IndividualRating category="Value" rating={props.value} />
+
+  </div>
+);
+
 
 export default Score;

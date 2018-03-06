@@ -11,7 +11,6 @@ const BlankSearch = props => {
       <button
         onClick={() => {
           props.clearSearch();
-          clear();
         }}
       >
         Back to all reviews

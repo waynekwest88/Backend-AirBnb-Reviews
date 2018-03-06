@@ -5,7 +5,6 @@ import HeaderBar from './HeaderBar';
 import BlankSearch from './BlankSearch.jsx';
 import axios from 'axios';
 import $ from 'jquery';
-import _ from 'lodash';
 
 export default class Review extends React.Component {
   constructor(props) {
@@ -21,9 +20,7 @@ export default class Review extends React.Component {
       location: 0,
       totalReviews: 0,
       hasSearched: false,
-      searchTerm: '',
-      offset: 0,
-      pageofItem: []
+      searchTerm: ''
     };
     // renderSearchTerm = this.renderSearchTerm.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
@@ -37,27 +34,34 @@ export default class Review extends React.Component {
 
   async retrieveMetaData() {
     const retrieved = await axios.get('/reviews');
-    await this.setState({
-      reviews: retrieved.data,
-      totalReviews: retrieved.data.length,
-      accuracy:
-        retrieved.data.reduce((a, b) => a + b.accuracy, 0) /
-        retrieved.data.length,
-      communication:
-        retrieved.data.reduce((a, b) => a + b.communication, 0) /
-        retrieved.data.length,
-      checkin:
-        retrieved.data.reduce((a, b) => a + b.checkin, 0) /
-        retrieved.data.length,
-      value:
-        retrieved.data.reduce((a, b) => a + b.value, 0) / retrieved.data.length,
-      cleaniness:
-        retrieved.data.reduce((a, b) => a + b.cleaniness, 0) /
-        retrieved.data.length,
-      location:
-        retrieved.data.reduce((a, b) => a + b.location, 0) /
-        retrieved.data.length
-    }, () => console.log(`current objects ahve this ==> ${this.state.reviews.length}`));
+    await this.setState(
+      {
+        reviews: retrieved.data,
+        totalReviews: retrieved.data.length,
+        accuracy:
+          retrieved.data.reduce((a, b) => a + b.accuracy, 0) /
+          retrieved.data.length,
+        communication:
+          retrieved.data.reduce((a, b) => a + b.communication, 0) /
+          retrieved.data.length,
+        checkin:
+          retrieved.data.reduce((a, b) => a + b.checkin, 0) /
+          retrieved.data.length,
+        value:
+          retrieved.data.reduce((a, b) => a + b.value, 0) /
+          retrieved.data.length,
+        cleaniness:
+          retrieved.data.reduce((a, b) => a + b.cleaniness, 0) /
+          retrieved.data.length,
+        location:
+          retrieved.data.reduce((a, b) => a + b.location, 0) /
+          retrieved.data.length
+      },
+      () =>
+        console.log(
+          `current objects ahve this ==> ${this.state.reviews.length}`
+        )
+    );
   }
 
   renderSearchTerm(e) {
@@ -68,8 +72,8 @@ export default class Review extends React.Component {
   clearSearch() {
     if (this.state.hasSearched) {
       this.setState({ hasSearched: false, searchTerm: '' }, () => {
-        $('searchbar').val('');
-        console.log($('#searchbar').val())
+        $(':input').val('');
+        console.log($('#searchbar').val());
       });
     }
   }
@@ -96,9 +100,12 @@ export default class Review extends React.Component {
     };
     const messageObj = this.filteredMessages();
     return (
-      <div>
+      <div className="reviews">
+        <HeaderBar totalReviews={this.state.totalReviews}/>
+
         <div>
           <input
+            id="searchbar"
             onChange={e => this.renderSearchTerm(e)}
             type="text"
             placeholder="Search Reviews"
@@ -131,16 +138,4 @@ export default class Review extends React.Component {
       </div>
     );
   }
-}
-
-{
-  /* messageObj.map(review => (
-              <Message
-                message={review.message}
-                date={review.date}
-                name={review.guest_name}
-                avatar={review.image}
-              />
-            ))
-          ) */
 }

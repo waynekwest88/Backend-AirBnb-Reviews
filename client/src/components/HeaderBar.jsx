@@ -1,15 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import _ from 'lodash';
+import ReactStars from 'react-stars';
 
-const ReviewDiv = styled.div`
-  color: purple;
-  display: inline-block;
-  width: 100%;
-  float: left;
-  font-family: 'Times New Roman';
-  font-size: 25px;
-`;
 export default class HeaderBar extends React.Component {
   constructor(props) {
     super(props);
@@ -17,22 +9,20 @@ export default class HeaderBar extends React.Component {
 
   render() {
     return (
-      <ReviewDiv id="staticReviewDiv">
-        <h6>Total Reviews: {this.props.totalReviews}</h6>
-        <span>☆</span>
-        <span>☆</span>
-        <span>☆</span>
-        <span>☆</span>
-        <span>☆</span>
-        <span>
-          <input
-            id='searchbar'
-            onChange={e => _.debounce(this.props.handleSearch(e), 3000)}
-            type="text"
-            placeholder="Search Reviews"
+      <div id="staticReviewDiv">
+        <div id="ReviewCount">{this.props.totalReviews} Reviews</div>
+        <div>
+          <ReactStars
+            count={5}
+            edit={false}
+            half
+            value={5}
+            size={24}
+            color1="#D8D8D8"
+            color2="#2cb5b4"
           />
-        </span>
-      </ReviewDiv>
+        </div>
+      </div>
     );
   }
 }
