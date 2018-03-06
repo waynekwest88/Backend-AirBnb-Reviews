@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 
-const BlankSearch = ({ searchReviews }) => {
+const BlankSearch = ({ search }) => {
   return (
     <div>
       <input
@@ -10,7 +10,8 @@ const BlankSearch = ({ searchReviews }) => {
         placeholder="Search reviews"
         onKeyUp={event => {
           if (event.keyCode === 13) {
-            searchReviews($(event.target).val());
+            search($(event.target).val());
+            console.log($(event.target).val())
           }
         }}
       />

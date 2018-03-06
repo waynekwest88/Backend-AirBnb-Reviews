@@ -3,6 +3,7 @@ import ReviewList from './ReviewList';
 import Score from './Score.jsx';
 import HeaderBar from './HeaderBar';
 import BlankSearch from './BlankSearch.jsx';
+import SearchPage from './SearchPage';
 import axios from 'axios';
 import $ from 'jquery';
 
@@ -23,7 +24,6 @@ export default class Review extends React.Component {
       searchTerm: null
     };
     this.clearSearch = this.clearSearch.bind(this);
-    this.renderSearchTerm = this.renderSearchTerm.bind(this);
     this.searchReviews = this.searchReviews.bind(this);
   }
 
@@ -59,11 +59,6 @@ export default class Review extends React.Component {
     );
   }
 
-  renderSearchTerm(e) {
-    // TODO: using the term, and filter out the correct messages
-    this.setState({ searchTerm: e.target.value, hasSearched: true });
-  }
-
   clearSearch() {
     this.setState({ searchResultsArray: null, searchTerm: null });
     $(':input').val('');
@@ -77,55 +72,39 @@ export default class Review extends React.Component {
     this.setState({ searchTerm: queryString });
     const reviewArr = [];
     this.state.reviews.filter(review => {
-      if (
-        `${review.message}`.toUpperCase().indexOf(queryString.toUpperCase()) >=
-        0
-      )
+      if (review.message.toLowerCase().includes(queryString.toLowerCase())) {
         reviewArr.push(review);
+      }
     });
     this.setState({ searchResultsArray: reviewArr });
   }
 
   render() {
-    if (this.state.reviews) {
-      return (
-        <div className="reviews">
-          <HeaderBar totalReviews={this.state.totalReviews} />
-
-          <div>
-            <BlankSearch searchReviews={this.searchReviews} />
-          </div>
-
-          <div className="scorecard">
-            <Score
-              accuracy={this.state.accuracy}
-              communication={this.state.communication}
-              value={this.state.value}
-              location={this.state.location}
-              cleaniness={this.state.cleaniness}
-              checkin={this.state.checkin}
-            />
-          </div>
-
-          <div id="messages">
-            <div>
-              <ReviewList reviews={this.state.reviews} />
-            </div>
-          </div>
-        </div>
-      );
-    } else if (this.state.searchResultsArray) {
+    if (this.state.searchResultsArray && this.state.searchTerm) {
       return (
         <div className="searchreviews">
           <HeaderBar totalReviews={this.state.totalReviews} />
 
           <div>
-            <input
-              id="searchbar"
-              onChange={this.renderSearchTerm}
-              type="text"
-              placeholder="Search Reviews"
-            />
+            <BlankSearch search={this.searchReviews} />
+          </div>
+
+          <SearchPage
+            clearSearch={this.clearSearch}
+            queryString={this.state.searchTerm}
+            numberOfResults={this.state.searchResultsArray.length}
+          />
+
+          <ReviewList reviews={this.state.searchResultsArray} />
+        </div>
+      );
+    } else if (this.state.reviews) {
+      return (
+        <div className="reviews">
+          <HeaderBar totalReviews={this.state.totalReviews} />
+
+          <div>
+            <BlankSearch search={this.searchReviews} />
           </div>
 
           <div className="scorecard">
