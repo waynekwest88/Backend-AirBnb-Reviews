@@ -3,7 +3,7 @@ import React from 'react';
 const SearchPage = ({ clearSearch, queryString, numberOfResults }) => {
   if (numberOfResults === 0) {
     return (
-      <div className="container searchSummary">
+      <div className="container-searchSummary">
         <div className="row justify-content-between summaryText">
           <div className="col-s-2 searchResultsSummary">
             None of our guests have mentioned{' '}
@@ -25,7 +25,7 @@ const SearchPage = ({ clearSearch, queryString, numberOfResults }) => {
     );
   } else if (numberOfResults === 1) {
     return (
-      <div className="container searchSummary">
+      <div className="container-searchSummary">
         <div className="row justify-content-between summaryText">
           <div className="col-s-2 searchResultsSummary">
             {numberOfResults} guest has mentioned
@@ -47,7 +47,7 @@ const SearchPage = ({ clearSearch, queryString, numberOfResults }) => {
     );
   }
   return (
-    <div className="container searchSummary">
+    <div className="container-searchSummary">
       <div className="row justify-content-between summaryText">
         <div className="col-s-2 searchResultsSummary">
           {numberOfResults} guests have mentioned

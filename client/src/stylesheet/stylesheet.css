@@ -1,6 +1,7 @@
 body {
   /* color:#2cb5b4; */
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   margin: 0px;
   word-wrap: break-word;
   font-size: 17px;
@@ -14,7 +15,7 @@ body {
 .scorecard {
   display: flex;
   justify-content: center;
-  width: 1100px;
+  width: 95vw;
   height: 100px;
 }
 
@@ -47,7 +48,8 @@ body {
   font-weight: 700;
   margin: 0px;
   word-wrap: break-word;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   padding-top: 2px;
   padding-bottom: 2px;
   color: #484848;
@@ -67,7 +69,8 @@ body {
 .username {
   font-weight: 400;
   color: #484848;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   margin: 0px;
   word-wrap: break-word;
   font-size: 17px;
@@ -82,7 +85,8 @@ body {
   box-sizing: border-box;
   margin: 0px;
   word-wrap: break-word;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
   font-size: 15px;
   line-height: 22px;
   letter-spacing: 0.2px;
@@ -91,7 +95,6 @@ body {
   color: #484848;
   font-weight: 300;
   font-size-adjust: 100%;
-
 }
 
 .user {
@@ -114,7 +117,7 @@ body {
 .page-item {
   width: 20px;
   height: 20px;
-  border-color: black;
+  border-color: grey;
   border-style: solid;
   border-width: 1px;
   display: flex;
@@ -125,10 +128,67 @@ body {
 
 .page-item a {
   text-decoration: none;
+  color: #2cb5b4;
 }
 
 .navbar {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+/* .searching {
+  width: 900px;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  color:white;
+} */
+
+.container-searchSummary {
+  width: 900px;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+.backToReviews {
+  width: 300px;
+  margin-left: 350px;
+}
+
+.backToReviews:hover {
+  text-decoration: underline;
+}
+
+.header-toplevel {
+  display: flex;
+  width: 95vw;
+  justify-content: space-between;
+  margin-left: 25px;
+}
+
+.staticReviewDiv {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+}
+
+.searchingInput {
+  margin-left: 500px;
+}
+
+.searchReviews {
+  display: flex;
+  justify-content: center;
+}
+
+#ReviewCount {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.text {
+  margin-top: 20px;
 }

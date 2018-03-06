@@ -33,6 +33,7 @@
     "path": "^0.12.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-icons": "^2.2.7",
     "react-paginate": "^5.1.0",
     "react-stars": "^2.2.5",
     "style-loader": "^0.20.2",

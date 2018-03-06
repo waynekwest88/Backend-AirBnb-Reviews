@@ -83,17 +83,20 @@ export default class Review extends React.Component {
     if (this.state.searchResultsArray && this.state.searchTerm) {
       return (
         <div className="searchreviews">
-          <HeaderBar totalReviews={this.state.totalReviews} />
+          <div className="header-toplevel">
+            <HeaderBar totalReviews={this.state.totalReviews} />
 
-          <div>
-            <BlankSearch search={this.searchReviews} />
+            <div>
+              <BlankSearch search={this.searchReviews} />
+            </div>
           </div>
-
-          <SearchPage
-            clearSearch={this.clearSearch}
-            queryString={this.state.searchTerm}
-            numberOfResults={this.state.searchResultsArray.length}
-          />
+          <div className="searching">
+            <SearchPage
+              clearSearch={this.clearSearch}
+              queryString={this.state.searchTerm}
+              numberOfResults={this.state.searchResultsArray.length}
+            />
+          </div>
 
           <ReviewList reviews={this.state.searchResultsArray} />
         </div>
@@ -101,12 +104,13 @@ export default class Review extends React.Component {
     } else if (this.state.reviews) {
       return (
         <div className="reviews">
-          <HeaderBar totalReviews={this.state.totalReviews} />
+          <div className="header-toplevel">
+            <HeaderBar totalReviews={this.state.totalReviews} />
 
-          <div>
-            <BlankSearch search={this.searchReviews} />
+            <div>
+              <BlankSearch search={this.searchReviews} />
+            </div>
           </div>
-
           <div className="scorecard">
             <Score
               accuracy={this.state.accuracy}
@@ -129,16 +133,3 @@ export default class Review extends React.Component {
     return <div>Loading....</div>;
   }
 }
-/* 
-<div id="messages">
-          {messageObj.length > 0 ? (
-            <div>
-              <ReviewList reviews={messageObj} />
-            </div>
-          ) : (
-            <BlankSearch
-              searchTerm={this.state.searchTerm}
-              clearSearch={this.clearSearch}
-            />
-          )}
-        </div> */

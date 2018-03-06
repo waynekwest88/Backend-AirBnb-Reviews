@@ -9,7 +9,7 @@ export default class HeaderBar extends React.Component {
 
   render() {
     return (
-      <div id="staticReviewDiv">
+      <div className="staticReviewDiv">
         <div id="ReviewCount">{this.props.totalReviews} Reviews</div>
         <div>
           <ReactStars
