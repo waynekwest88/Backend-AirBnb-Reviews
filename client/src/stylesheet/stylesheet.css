@@ -16,6 +16,13 @@ body {
 }
 
 .scorecard {
+  margin-top: 25px;
+  border-width: 1px;
+  border-color: grey;
+  border-style: solid;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
   display: flex;
   justify-content: center;
   width: 65vw;
@@ -36,7 +43,7 @@ body {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  width: 1000px;
+  width: 65vw;
   height: 100px;
 }
 

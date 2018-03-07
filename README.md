@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/SeaBNB/amenities
+  - https://github.com/SeaBNB/Bookings
+  - https://github.com/SeaBNB/reviews
+  - https://github.com/SeaBNB/similar-listings
 
 ## Table of Contents
 
@@ -18,6 +18,20 @@
 ## Usage
 
 > Some usage instructions
+```sh
+  Database uses Mongoose DB
+  to install:
+  brew update && brew install mongodb
+
+  create default mongodb directory:
+  mkdir -p /data/db
+
+
+  npm run start-server
+  mongod
+  npm run seed // seed database
+  npm run start
+```
 
 ## Requirements
 
@@ -34,7 +48,7 @@ From within the root directory:
 
 ```sh
 npm install -g webpack
-npm install
-npm install express --save
+npm install  // to inject dependencies
+
 ```
 
