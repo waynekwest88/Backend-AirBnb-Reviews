@@ -1,5 +1,4 @@
 body {
-  /* color:#2cb5b4; */
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
     Helvetica Neue, sans-serif;
   margin: 0px;
@@ -9,14 +8,19 @@ body {
   letter-spacing: 0.2px;
   font-weight: 300;
   display: inline;
-  /* background-color: #cccccc; */
+}
+
+#reviews {
+  width: 65vw;
+  margin-top: 25px;
 }
 
 .scorecard {
   display: flex;
   justify-content: center;
-  width: 95vw;
+  width: 65vw;
   height: 100px;
+  margin-left: 25px;
 }
 
 .col-s-2 {
@@ -35,6 +39,7 @@ body {
   width: 1000px;
   height: 100px;
 }
+
 
 .subrating {
   display: flex;
@@ -108,6 +113,7 @@ body {
 }
 
 .pagination {
+  width: 65vw;
   list-style-type: none;
   display: flex;
   justify-content: space-around;
@@ -137,25 +143,97 @@ body {
   justify-content: center;
 }
 
-/* .searching {
-  width: 900px;
-  background-color: black;
+.row-justify-content-between-summaryText {
+  width: 65vw;
   display: flex;
   justify-content: space-between;
-  color:white;
-} */
+}
 
 .container-searchSummary {
-  width: 900px;
-  background-color: black;
+  width: 65vw;
+  margin-left: 25px;
+  margin-top: 25px;
+  padding-top: 35px;
+  border-style: solid;
+  border-width: 1px;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-color: grey;
   display: flex;
   justify-content: space-between;
-  color: white;
+  color: #2cb5b4;
+}
+
+.col-s-2-searchResultsSummary {
+  margin-left: 15px;
+}
+
+.row-justify-content-between-summaryText-2 {
+  width: 65vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-searchSummary-2 {
+  width: 65vw;
+  margin-left: 25px;
+  margin-top: 25px;
+  padding-top: 35px;
+  border-style: solid;
+  border-width: 1px;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-color: grey;
+  display: flex;
+  justify-content: space-between;
+  color: #2cb5b4;
+}
+
+.col-s-2-searchResultsSummary-2 {
+  margin-left: 15px;
+}
+
+.row-justify-content-between-summaryText-3 {
+  width: 65vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-searchSummary-3 {
+  width: 65vw;
+  margin-left: 25px;
+  margin-top: 25px;
+  padding-top: 35px;
+  border-style: solid;
+  border-width: 1px;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-color: grey;
+  display: flex;
+  justify-content: space-between;
+  color: #2cb5b4;
+}
+
+.col-s-2-searchResultsSummary-3 {
+  margin-left: 15px;
+}
+
+.params {
+  color: black;
+  font-weight: bold;
+}
+
+.col-s-2 {
+  align-self: flex-start;
 }
 
 .backToReviews {
+  display: flex;
+  /* align-self: flex-start; */
   width: 300px;
-  margin-left: 350px;
 }
 
 .backToReviews:hover {
@@ -164,7 +242,7 @@ body {
 
 .header-toplevel {
   display: flex;
-  width: 95vw;
+  width: 65vw;
   justify-content: space-between;
   margin-left: 25px;
 }
@@ -176,7 +254,8 @@ body {
 }
 
 .searchingInput {
-  margin-left: 500px;
+  width: 200px;
+  margin-left: 200px;
 }
 
 .searchReviews {
