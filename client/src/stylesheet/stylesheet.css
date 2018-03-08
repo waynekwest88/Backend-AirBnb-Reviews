@@ -11,9 +11,9 @@ body {
 }
 
 #reviews {
-  min-width: 70vw;
-  width: 65vw;
+  width: 639px;
   margin-top: 25px;
+
 }
 
 .scorecard {
@@ -51,7 +51,7 @@ body {
 .subrating {
   display: flex;
   justify-content: space-between;
-  width: 400px;
+  width: 220px;
   height: 30px;
   align-items: center;
 }
@@ -90,7 +90,8 @@ body {
   letter-spacing: 0.2px;
   letter-spacing: 0.2px;
   font-size-adjust: 100%;
-  box-sizing: border-box;
+  /*//box-sizing: border-box;*/
+  width: 620px;
 }
 
 .reviewDate {
@@ -274,20 +275,24 @@ body {
 }
 
 .header-toplevel {
+
   display: flex;
   justify-content: space-between;
   margin-left: 25px;
+  width: 500px;
+
 }
 
 .staticReviewDiv {
   display: flex;
-  width: 300px;
+  width: 800px;
   justify-content: space-between;
+
 }
 
 .searchingInput {
   width: 200px;
-  margin-left: 200px;
+  margin-left: 18px;
 }
 
 .searchReviews {
@@ -296,10 +301,20 @@ body {
 }
 
 #ReviewCount {
-  font-size: 28px;
+  font-size: 25px;
   font-weight: 700;
+  width: 200px;
+  display: flex;
 }
 
 .text {
   margin-top: 20px;
+}
+
+.review-bar{
+  width: 200px;
+  height: 20px;
+
+  display: flex;
+
 }
