@@ -146,7 +146,6 @@ body {
 .navbar {
   width: 100%;
   display: flex;
-  border:1px solid red;
 }
 
 .row-justify-content-between-summaryText {
