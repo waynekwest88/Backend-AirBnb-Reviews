@@ -9,13 +9,10 @@ body {
   font-weight: 300;
   display: inline;
 }
-
 #reviews {
   width: 639px;
   margin-top: 25px;
-
 }
-
 .scorecard {
   margin: 30px;
   border-width: 1px;
@@ -29,15 +26,12 @@ body {
   height: 100px;
   margin-left: 25px;
 }
-
 .col-s-2 {
   float: left;
 }
-
 .container .user {
   margin: 0px;
 }
-
 .bigscorecard {
   display: flex;
   flex-direction: column;
@@ -46,8 +40,6 @@ body {
   width: 65vw;
   height: 100px;
 }
-
-
 .subrating {
   display: flex;
   justify-content: space-between;
@@ -55,7 +47,6 @@ body {
   height: 30px;
   align-items: center;
 }
-
 .ReviewsCount {
   font-weight: 700;
   margin: 0px;
@@ -69,7 +60,6 @@ body {
   line-height: 30px;
   letter-spacing: -0.6px;
 }
-
 .profilePhoto {
   height: 48px;
   width: 48px;
@@ -77,7 +67,6 @@ body {
   border: 2px solid #ffffff;
   margin-right: 15px;
 }
-
 .username {
   font-weight: 400;
   color: #484848;
@@ -93,7 +82,6 @@ body {
   /*//box-sizing: border-box;*/
   width: 620px;
 }
-
 .reviewDate {
   box-sizing: border-box;
   margin: 0px;
@@ -109,25 +97,23 @@ body {
   font-weight: 300;
   font-size-adjust: 100%;
 }
-
 .user {
   margin: 15px;
 }
-
 .review {
   margin: 30px;
   padding-bottom: 25px;
   border-bottom: 1px solid rgb(220, 224, 224);
 }
-
 .pagination {
   padding-left: 10px;
   list-style-type: none;
   display: flex;
   justify-content: space-around;
-  flex: wrap;
+  flex-wrap: wrap;
+  width: 600px;
+  height: 30px;
 }
-
 .page-item {
   width: 24px;
   height: 20px;
@@ -137,25 +123,22 @@ body {
   display: flex;
   justify-content: center;
   text-decoration: none;
+  margin: 5px;
 }
-
 .page-item a {
   text-decoration: none;
   width:auto;
   color: #2cb5b4;
 }
-
 .navbar {
-  width: 100%;
+  width: 600px;
   display: flex;
 }
-
 .row-justify-content-between-summaryText {
   width: 65vw;
   display: flex;
   justify-content: space-between;
 }
-
 .container-searchSummary {
   margin: 25px 30px 0px;
   padding-top: 35px;
@@ -169,12 +152,9 @@ body {
   justify-content: space-between;
   color: #2cb5b4;
 }
-
 .col-s-2-searchResultsSummary {
   margin-left: 15px;
 }
-
-
 .container-searchSummary-2 {
   margin: 25px 30px 0px;
   padding-top: 35px;
@@ -188,18 +168,14 @@ body {
   justify-content: space-between;
   color: #2cb5b4;
 }
-
 .col-s-2-searchResultsSummary-2 {
   margin-left: 15px;
 }
-
-
 .row-justify-content-between-summaryText-3 {
   width: 65vw;
   display: flex;
   justify-content: space-between;
 }
-
 .container-searchSummary-3 {
   margin: 25px 30px 0px;
   padding-top: 35px;
@@ -213,17 +189,14 @@ body {
   justify-content: space-between;
   color: #2cb5b4;
 }
-
 .col-s-2-searchResultsSummary-3 {
   margin-left: 15px;
 }
-
 .row-justify-content-between-summaryText-2 {
   width: 65vw;
   display: flex;
   justify-content: space-between;
 }
-
 .container-searchSummary-2 {
   width: 65vw;
   margin-left: 25px;
@@ -239,82 +212,62 @@ body {
   justify-content: space-between;
   color: #2cb5b4;
 }
-
 .col-s-2-searchResultsSummary-2 {
   margin-left: 15px;
 }
-
 .row-justify-content-between-summaryText-3 {
   width: 65vw;
   display: flex;
   justify-content: space-between;
 }
-
-
 .col-s-2-searchResultsSummary-3 {
   margin-left: 15px;
 }
-
 .params {
   color: black;
   font-weight: bold;
 }
-
 .col-s-2 {
   align-self: flex-start;
 }
-
 .backToReviews {
   display: flex;
   /* align-self: flex-start; */
   width: 300px;
 }
-
 .backToReviews:hover {
   text-decoration: underline;
 }
-
 .header-toplevel {
-
   display: flex;
   justify-content: space-between;
   margin-left: 25px;
   width: 500px;
-
 }
-
 .staticReviewDiv {
   display: flex;
   width: 800px;
   justify-content: space-between;
-
 }
-
 .searchingInput {
   width: 200px;
   margin-left: 18px;
 }
-
 .searchReviews {
   display: flex;
   justify-content: center;
 }
-
 #ReviewCount {
   font-size: 25px;
   font-weight: 700;
   width: 200px;
   display: flex;
 }
-
 .text {
   margin-top: 20px;
 }
-
 .review-bar{
   width: 200px;
   height: 20px;
-
   display: flex;
-
 }
