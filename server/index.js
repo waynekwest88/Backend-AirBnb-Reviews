@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const db = require("../database/models/index");
 const path = require("path");
+const cors = require('cors');
 let app = express();
 let port = 3004;
 const filePath = path.join(__dirname, "../client/dist");
@@ -9,7 +10,7 @@ const filePath = path.join(__dirname, "../client/dist");
 app.use(express.static(filePath));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(cors());
 
 app.get("/reviews/:id", (req, res) => {
   const id = req.params.id;

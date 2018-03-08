@@ -28,7 +28,7 @@ export default class Review extends React.Component {
   }
 
   async retrieveMetaData() {
-    const retrieved = await axios.get('/reviews');
+    const retrieved = await axios.get('http://localhost:3004/reviews');
     await this.setState(
       {
         reviews: retrieved.data,
@@ -120,7 +120,7 @@ export default class Review extends React.Component {
               cleaniness={this.state.cleaniness}
               checkin={this.state.checkin}
             />
-          </div>
+            </div>
 
           <div id="messages">
             <div>
