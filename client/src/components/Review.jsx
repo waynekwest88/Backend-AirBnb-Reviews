@@ -86,9 +86,7 @@ export default class Review extends React.Component {
           <div className="header-toplevel">
             <HeaderBar totalReviews={this.state.totalReviews} />
 
-            <div>
-              <BlankSearch search={this.searchReviews} />
-            </div>
+            <BlankSearch search={this.searchReviews} />
           </div>
           <div className="searching">
             <SearchPage
@@ -107,9 +105,7 @@ export default class Review extends React.Component {
           <div className="header-toplevel">
             <HeaderBar totalReviews={this.state.totalReviews} />
 
-            <div>
-              <BlankSearch search={this.searchReviews} />
-            </div>
+            <BlankSearch search={this.searchReviews} />
           </div>
           <div className="scorecard">
             <Score
@@ -120,7 +116,7 @@ export default class Review extends React.Component {
               cleaniness={this.state.cleaniness}
               checkin={this.state.checkin}
             />
-            </div>
+          </div>
 
           <div id="messages">
             <div>

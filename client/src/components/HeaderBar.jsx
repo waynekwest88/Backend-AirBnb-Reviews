@@ -11,7 +11,7 @@ export default class HeaderBar extends React.Component {
     return (
       <div className="staticReviewDiv">
         <div id="ReviewCount">{this.props.totalReviews} Reviews</div>
-        <div>
+        <div className="review-bar">
           <ReactStars
             count={5}
             edit={false}

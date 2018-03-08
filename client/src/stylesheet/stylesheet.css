@@ -11,6 +11,7 @@ body {
 }
 
 #reviews {
+  min-width: 70vw;
   width: 65vw;
   margin-top: 25px;
 }

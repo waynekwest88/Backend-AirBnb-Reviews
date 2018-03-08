@@ -27,10 +27,10 @@
   mkdir -p /data/db
 
 
-  npm run start-server
   mongod
-  npm run seed // seed database
   npm run start
+  npm run seed // seed database
+
 ```
 
 ## Requirements
