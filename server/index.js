@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const db = require("../database/models/index");
 const path = require("path");
@@ -7,6 +8,7 @@ let app = express();
 let port = 3004;
 const filePath = path.join(__dirname, "../client/dist");
 
+mongoose.connect('mongodb://localhost/reviews');
 app.use(express.static(filePath));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -23,7 +25,9 @@ app.get("/reviews/:id", (req, res) => {
 app.get("/reviews", (req, res) => {
   db
     .findAllReviews()
-    .then(results => res.status(202).send(results))
+    .then(results => {
+      res.status(202).send(results)}
+    )
     .catch(e => console.log(`failed to retrieve from mongo ==> ${e}`));
 });
 

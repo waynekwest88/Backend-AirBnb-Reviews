@@ -1,9 +1,16 @@
-const data = require('./fakedata.js')
-const db = require("../index.js");
+const data = require('./fake.js');
+const db = require('../index.js');
+const mongoose = require('mongoose');
 
-const seed = async () => {
-  const faked = await data.fakeData();
-  faked.forEach(item => db.save(item));
-}
+mongoose.connect('mongodb://localhost/reviews');
 
-seed();
+db
+  .saveAllReviews(data)
+  .then(() => {
+    console.log('Saved!');
+    mongoose.disconnect();
+  })
+  .catch(e => {
+    console.log('failed with', e);
+    mongoose.disconnect();
+  });
