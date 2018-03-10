@@ -1,13 +1,14 @@
-const data = require('./fake.js');
+const mockData = require('./mocked_data.js');
+
 const db = require('../index.js');
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/reviews');
 
 db
-  .saveAllReviews(data)
-  .then(() => {
-    console.log('Saved!');
+  .saveAllReviews(mockData)
+  .then((data) => {
+    console.log(data);
     mongoose.disconnect();
   })
   .catch(e => {

@@ -2865,3 +2865,20 @@ module.exports = [
     value: 0
   }
 ]
+
+/* 
+  id: 1,
+  reviews: {
+    guest_name: "Candida Schuster",
+    communication: 2,
+    cleaniness: 5,
+    location: 0,
+    checkin: 4,
+    accuracy: 5,
+    message:
+      "We need to override the digital SMTP alarm! If we navigate the program, we can get to the SQL alarm through the mobile PCI system! Try to hack the EXE transmitter, maybe it will back up the 1080p capacitor! You can't index the card without indexing the 1080p SSL circuit!",
+    date: "August 2016",
+    image: "https://s3.amazonaws.com/uifaces/faces/twitter/langate/128.jpg",
+    value: 0
+  }
+*/

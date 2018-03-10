@@ -6,16 +6,20 @@ const FormatDate = (mongoose.Schema.Types.FormatDate = require('mongoose-schema-
 const reviewSchema = mongoose.Schema({
   // TODO: my schemas here
   id: { type: Number, unique: true },
-  guest_name: String,
-  accuracy: Number,
-  communication: Number,
-  cleaniness: Number,
-  location: Number,
-  checkin: Number,
-  message: String,
-  date: String,
-  image: String,
-  value: Number
+  reviews:
+    {
+      guest_name: String,
+      communication: Number,
+      cleaniness: Number,
+      location: Number,
+      checkin: Number,
+      value: Number,
+      accuracy: Number,
+      message: [String],
+      date: [String],
+      image: [String],
+    }
+
 });
 
 const ReviewsModel = mongoose.model('Guest', reviewSchema);
@@ -25,7 +29,7 @@ const saveAllReviews = reviews => {
 };
 
 const findReviewById = id => {
-  return ReviewsModel.find({ id: id });
+  return ReviewsModel.findOne({ id });
 };
 
 const findAllReviews = () => {
@@ -37,8 +41,6 @@ module.exports = {
   findReviewById,
   findAllReviews
 };
-
-
 
 /* 
   id, name, accuracy, communication, cleaniness, location, checkin, message, date
@@ -62,9 +64,6 @@ module.exports = {
 //     if (error) return console.log(error);
 //   });
 // }
-
-
-
 
 // db.on("open", () => {
 //   console.log("Successfully connected to mongo guest database");

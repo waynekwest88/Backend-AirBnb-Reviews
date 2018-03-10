@@ -28,29 +28,25 @@ export default class Review extends React.Component {
   }
 
   async retrieveMetaData() {
-    const retrieved = await axios.get('http://localhost:3004/reviews');
+    let id = this.props.id || parseInt(window.location.pathname.split('/')[2], 10);
+    const retrieved = await axios.get(`http://localhost:3004/reviews/${id}/reviews`);
+    console.log(retrieved.data);
     await this.setState(
       {
-        reviews: retrieved.data,
-        totalReviews: retrieved.data.length,
+        reviews: retrieved.data.reviews,
+        totalReviews: retrieved.data.reviews.length,
         accuracy:
-          retrieved.data.reduce((a, b) => a + b.accuracy, 0) /
-          retrieved.data.length,
+          retrieved.data.reviews.accuracy,
         communication:
-          retrieved.data.reduce((a, b) => a + b.communication, 0) /
-          retrieved.data.length,
+          retrieved.data.reviews.communication,
         checkin:
-          retrieved.data.reduce((a, b) => a + b.checkin, 0) /
-          retrieved.data.length,
+          retrieved.data.reviews.checkin,
         value:
-          retrieved.data.reduce((a, b) => a + b.value, 0) /
-          retrieved.data.length,
+          retrieved.data.reviews.value,
         cleaniness:
-          retrieved.data.reduce((a, b) => a + b.cleaniness, 0) /
-          retrieved.data.length,
+          retrieved.data.reviews.cleaniness,
         location:
-          retrieved.data.reduce((a, b) => a + b.location, 0) /
-          retrieved.data.length
+          retrieved.data.reviews.location
       },
       () =>
         console.log(
@@ -65,6 +61,7 @@ export default class Review extends React.Component {
   }
 
   componentDidMount() {
+    console.log('aslkfjkladsjf')
     this.retrieveMetaData();
   }
 
