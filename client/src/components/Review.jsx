@@ -28,25 +28,21 @@ export default class Review extends React.Component {
   }
 
   async retrieveMetaData() {
-    let id = this.props.id || parseInt(window.location.pathname.split('/')[2], 10);
-    const retrieved = await axios.get(`http://localhost:3004/reviews/${id}/reviews`);
-    console.log(retrieved.data);
+    let id =
+      this.props.id || parseInt(window.location.pathname.split('/')[2], 10);
+    const retrieved = await axios.get(
+      `http://localhost:3004/reviews/${id}/reviews`
+    );
     await this.setState(
       {
         reviews: retrieved.data.reviews,
-        totalReviews: retrieved.data.reviews.length,
-        accuracy:
-          retrieved.data.reviews.accuracy,
-        communication:
-          retrieved.data.reviews.communication,
-        checkin:
-          retrieved.data.reviews.checkin,
-        value:
-          retrieved.data.reviews.value,
-        cleaniness:
-          retrieved.data.reviews.cleaniness,
-        location:
-          retrieved.data.reviews.location
+        totalReviews: retrieved.data.reviews.message.length,
+        accuracy: retrieved.data.reviews.accuracy,
+        communication: retrieved.data.reviews.communication,
+        checkin: retrieved.data.reviews.checkin,
+        value: retrieved.data.reviews.value,
+        cleaniness: retrieved.data.reviews.cleaniness,
+        location: retrieved.data.reviews.location
       },
       () =>
         console.log(
@@ -61,23 +57,39 @@ export default class Review extends React.Component {
   }
 
   componentDidMount() {
-    console.log('aslkfjkladsjf')
     this.retrieveMetaData();
   }
 
+  /*  this.state.reviews.filter(db => {
+    if (db.reviews.message.toLowerCase().includes(queryString.toLowerCase())) {
+      reviewArr.push(db);
+    }
+  }); */
+
   searchReviews(queryString) {
     this.setState({ searchTerm: queryString });
-    const reviewArr = [];
-    this.state.reviews.filter(review => {
-      if (review.message.toLowerCase().includes(queryString.toLowerCase())) {
-        reviewArr.push(review);
+    const reviewObj = {
+      message: [],
+      guest_name: [],
+      date: [],
+      image: []
+    };
+    this.state.reviews.message.filter((message, messageIdx) => {
+      if (message.toLowerCase().includes(queryString.toLowerCase())) {
+        reviewObj.message.push(message);
+        reviewObj.guest_name.push(this.state.reviews.guest_name[messageIdx]);
+        reviewObj.date.push(this.state.reviews.date[messageIdx]);
+        reviewObj.image.push(this.state.reviews.image[messageIdx]);
       }
+
     });
-    this.setState({ searchResultsArray: reviewArr });
+    console.log('review ==>', reviewObj)
+    this.setState({ searchResultsArray: reviewObj });
   }
 
   render() {
     if (this.state.searchResultsArray && this.state.searchTerm) {
+      console.log(this.state.searchResultsArray);
       return (
         <div className="searchreviews">
           <div className="header-toplevel">

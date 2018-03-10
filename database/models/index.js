@@ -8,7 +8,7 @@ const reviewSchema = mongoose.Schema({
   id: { type: Number, unique: true },
   reviews:
     {
-      guest_name: String,
+      guest_name: [String],
       communication: Number,
       cleaniness: Number,
       location: Number,

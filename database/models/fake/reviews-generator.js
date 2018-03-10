@@ -8,7 +8,7 @@ const generateReviews = () => {
     let User = {
       id: i,
       reviews: {
-        guest_name: faker.name.findName(),
+        guest_name: generateNames(),
         communication: faker.random.number({ min: 0, max: 5 }),
         cleaniness: faker.random.number({ min: 0, max: 5 }),
         location: faker.random.number({ min: 0, max: 5 }),
@@ -24,6 +24,14 @@ const generateReviews = () => {
   }
   return guests;
 };
+
+const generateNames = () => {
+  let names = [];
+  for (let i = 0; i < 56; i++) {
+    names.push(`${faker.name.findName()}`);
+  }
+  return names;
+}
 
 const generateDates = () => {
   let dates = [];
