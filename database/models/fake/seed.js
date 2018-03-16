@@ -8,7 +8,7 @@ async function generateReviews() {
   const database = connect.db('reviews');
   const collection = database.collection('guests');
   let guests = [];
-
+ 
     for (let i = 1; i <= 10000001; i++) {
       if (i % 100000 === 0) {
         await collection.insertMany(guests)
