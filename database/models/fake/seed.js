@@ -45,6 +45,7 @@ async function generateReviews() {
           value: faker.random.number({ min: 0, max: 5 })
         }
       };
+      collection.createIndex({id:1})
       guests.push(User);
     }
     connect.close();
