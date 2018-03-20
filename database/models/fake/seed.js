@@ -8,15 +8,23 @@ async function generateReviews() {
   const database = connect.db('reviews');
   const collection = database.collection('guests');
   let guests = [];
+  let startTime = new Date().getTime();
  
-    for (let i = 1; i <= 10000001; i++) {
+    for (let i = 0; i <= 10000001; i++) {
       if (i % 100000 === 0) {
         await collection.insertMany(guests)
         .catch((e) => {
           console.error(e);
           // connect.close();
         });
-        console.log(i);
+        let currentTime = new Date().getTime();
+        let seconds = (currentTime - startTime) / 1000;
+        let minutes = Math.floor(seconds / 60);
+        let realSeconds = seconds - (minutes * 60);
+
+        console.log(`inserted batch ${i}`);
+        console.log(`Finished seeding, it took ${minutes} minutes and ${realSeconds} seconds have passed`)
+
         guests = [];
       } 
   
