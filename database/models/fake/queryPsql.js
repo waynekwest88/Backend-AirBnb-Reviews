@@ -8,7 +8,7 @@ let query = () => {
     .then((data) => {
         let endTime = new Date().getTime();
         console.log(data);
-        console.log(`${endTime - startTime} ms`);
+        console.log(`QUERY TIME: ${endTime - startTime}ms`);
     })
     .then(() => {
         pgp.end();

@@ -11,7 +11,7 @@ async function query() {
   .then((data) => {
     let endTime = new Date().getTime();
     console.log(data);
-    console.log(`${endTime - startTime} MS`);
+    console.log(`QUERY TIME: ${endTime - startTime}ms`);
     connect.close();
   })
   .catch((e) => {
