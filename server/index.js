@@ -1,3 +1,4 @@
+const newRelic = require('newrelic');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -15,6 +16,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/reviews/:id', express.static(filePath));
 
+app.use((req, res, next)=> {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.get('/reviews/:id/reviews', (req, res) => {
   const { id } = req.params;
   db
@@ -30,6 +37,7 @@ app.get('/reviews', (req, res) => {
   db
     .findAllReviews()
     .then(results => {
+      console.log()
       res.status(202).send(results);
     })
     .catch(e => console.log(`failed to retrieve from mongo ==> ${e}`));

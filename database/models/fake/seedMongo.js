@@ -1,5 +1,4 @@
 const faker = require('faker');
-const fs = require('fs');
 const db = require('../index.js');
 const MongoClient = require('mongodb').MongoClient;
 
@@ -9,6 +8,7 @@ async function generateReviews() {
   const collection = database.collection('guests');
   let guests = [];
   let startTime = new Date().getTime();
+  let round = 0;
  
     for (let i = 0; i <= 10000001; i++) {
       if (i % 100000 === 0) {
@@ -21,6 +21,8 @@ async function generateReviews() {
         let seconds = (currentTime - startTime) / 1000;
         let minutes = Math.floor(seconds / 60);
         let realSeconds = seconds - (minutes * 60);
+
+        var insertsPerSecond = 10000000 / (minutes * seconds);
 
         console.log(`inserted batch ${i}`);
         console.log(`Finished seeding, it took ${minutes} minutes and ${realSeconds} seconds have passed`)
@@ -45,9 +47,10 @@ async function generateReviews() {
           value: faker.random.number({ min: 0, max: 5 })
         }
       };
-      collection.createIndex({id:1})
       guests.push(User);
     }
+    collection.createIndex({id: 1})
+    console.log(`inserted 10 million at ${insertsPerSecond}`)
     connect.close();
 };
 

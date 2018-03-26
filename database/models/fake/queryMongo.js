@@ -1,24 +1,28 @@
 const db = require('../index.js');
 const MongoClient = require('mongodb').MongoClient;
 
-async function query() {
+async function query(amountOfQueries) {
   const connect = await MongoClient.connect('mongodb://localhost/27017');
   const database = connect.db('reviews');
   const collection = database.collection('guests');
-  let startTime = new Date().getTime();
+  const randomizeNumber = function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  let totalTime = 0;
 
-  collection.findOne({id:9999})
-  .then((data) => {
+  for (var i = 0; i < amountOfQueries; i++) {
+    let startTime = new Date().getTime();
+    let number = randomizeNumber(0, 9999979)
+    await collection.findOne({id: number})
     let endTime = new Date().getTime();
-    console.log(data);
-    console.log(`QUERY TIME: ${endTime - startTime}ms`);
-    connect.close();
-  })
-  .catch((e) => {
-    console.error(e);
-    // connect.close();
-  });
+    let time = endTime - startTime;
+    totalTime += time;
+    console.log(`QUERY TIME for ${number}: ${time}ms`);
+  }
+
+  let avgTime = totalTime / amountOfQueries;
+  console.log(`FINAL AVG QUERY TIME: ${avgTime}ms`);
   connect.close();
 };
 
-query();
+query(1000);
