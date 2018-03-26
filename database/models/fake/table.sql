@@ -1,5 +1,6 @@
 CREATE TABLE userpage(
-  id SERIAL PRIMARY KEY,
+  -- id SERIAL PRIMARY KEY,
+  id INTEGER,
   guest_name TEXT,
   communication DOUBLE PRECISION,
   cleaniness DOUBLE PRECISION,

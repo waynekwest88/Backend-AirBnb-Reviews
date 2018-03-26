@@ -1,6 +1,8 @@
 import React from 'react';
 
-const IndividualReview = ({ username, image, reviewDate, message }) => (
+const IndividualReview = ({ username, image, reviewDate, message }) => {
+  console.log('indidivual review', image);
+  return (
   <div className="container review">
     <div className="container user">
       <div className="row">
@@ -19,6 +21,7 @@ const IndividualReview = ({ username, image, reviewDate, message }) => (
     </div>
     <div className="text">{message}</div>
   </div>
-);
+  )
+};
 
 export default IndividualReview;

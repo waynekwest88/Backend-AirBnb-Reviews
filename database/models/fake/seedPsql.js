@@ -26,32 +26,28 @@ const cs = new pgp.helpers.ColumnSet(
 
 function getNextData(t, pageIndex) {
   let data = null;
+
   if (pageIndex < 1000) {
       data = [];
+
       for (let i = 0; i < 10000; i++) {
           const idx = pageIndex * 10000 + i; // to insert unique product names
           data.push({
             guest_name: faker.name.findName(),
             communication: faker.random.number({ min: 0, max: 5 }),
-            // communication: randomizeNumber(0, 5),
             cleaniness: faker.random.number({ min: 0, max: 5 }),
-            // cleaniness: randomizeNumber(0, 5),
             location: faker.random.number({ min: 0, max: 5 }),
-            // location: randomizeNumber(0, 5),
             checkin: faker.random.number({ min: 0, max: 5 }),
-            // checkin: randomizeNumber(0, 5),
             accuracy: faker.random.number({ min: 0, max: 5 }),
-            // accuracy: randomizeNumber(0, 5),
             message: `${faker.hacker.phrase()} ${faker.hacker.phrase()} ${faker.hacker.phrase()} ${faker.hacker.phrase()}`,
             date: `${faker.date.month()} ${Math.floor(
               Math.random() * (2017 - 2013 + 1)
             ) + 2013}`,
             image: faker.image.avatar(),
             value: faker.random.number({ min: 0, max: 5 })
-            // value: randomizeNumber(0, 5)
           });
       }
-      console.log(pageIndex);
+      console.log(`inserted batch ${pageIndex}`);
   }
   return Promise.resolve(data);
 }

@@ -89,7 +89,7 @@ export default class Review extends React.Component {
 
   render() {
     if (this.state.searchResultsArray && this.state.searchTerm) {
-      console.log(this.state.searchResultsArray);
+      console.log('SearchResults', this.state.searchResultsArray);
       return (
         <div className="searchreviews">
           <div className="header-toplevel">
@@ -109,6 +109,7 @@ export default class Review extends React.Component {
         </div>
       );
     } else if (this.state.reviews) {
+      console.log('this.state.reviews', this.state.reviews)
       return (
         <div className="reviews">
           <div className="header-toplevel">

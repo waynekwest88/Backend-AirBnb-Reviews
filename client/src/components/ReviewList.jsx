@@ -14,7 +14,8 @@ export default class ReviewList extends React.Component {
       displayedGuestNames: this.props.reviews.guest_name.slice(0, 7),
       displayedReviews: this.props.reviews.message.slice(0, 7),
       displayedDates: this.props.reviews.date.slice(0, 7),
-      displayedImages: this.props.reviews.image.slice(0, 7)
+      displayedImages: this.props.reviews.image.slice(0, 7),
+      // displayedImages: this.props.reviews.image.slice(0, 7),
     };
     this.updateCurrentPage = this.updateCurrentPage.bind(this);
     // this.renderIndividualReviews = this.renderIndividualReviews();
@@ -40,11 +41,14 @@ export default class ReviewList extends React.Component {
   renderIndividualReviews() {
     const individualReviewArray = [];
     for (let i = 0; i < this.state.displayedDates.length; i++) {
+      console.log('displayedImages', this.state.displayedImages)
+      console.log('images', this.state.images)
       individualReviewArray.push(
         <IndividualReview
           username={this.state.displayedGuestNames[i]}
           reviewDate={this.state.displayedDates[i]}
           image={this.state.displayedImages[i]}
+          // image={this.state.displayedImages[i]}
           message={this.state.displayedReviews[i]}
         />
       );
