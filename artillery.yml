@@ -1,8 +1,8 @@
 config:
-  target: 'http://localhost:3004'
+  target: 'http://127.0.0.1:3004'
   phases:
-    - duration: 60
-      arrivalRate: 20
+    - duration: 30
+      arrivalRate: 10
   defaults:
     headers:
       x-my-service-auth: '987401838271002188298567'
@@ -14,4 +14,4 @@ scenarios:
       - get:
           url: '/reviews/{{ id }}/reviews'
       - log: 'Sent a request to {{ id }}'
-      count: 1
+      count: 10

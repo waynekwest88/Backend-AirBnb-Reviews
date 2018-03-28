@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const FormatDate = (mongoose.Schema.Types.FormatDate = require('mongoose-schema-formatdate'));
-// const db = mongoose.connection;
-// mongoose.connect("mongodb://localhost/reviews");
+const db = mongoose.connection;
+mongoose.connect("mongodb://localhost/reviews");
 
 const reviewSchema = mongoose.Schema({
   id: { type: Number, unique: true },

@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bluebird": "^3.5.1",
     "cors": "^2.8.4",
     "css-loader": "^0.28.10",
     "enzyme": "^3.3.0",
