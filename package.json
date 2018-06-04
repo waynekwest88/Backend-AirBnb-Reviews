@@ -8,9 +8,9 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start-client": "webpack -d --watch",
+    "build": "webpack -w",
     "start-server": "nodemon server/index.js",
-    "start": "webpack -d --watch & nodemon server/index.js",
+    "start": "nodemon server/index.js",
     "seed": "node database/models/fake/seedMongo.js",
     "drop": "node database/models/fake/dropData.js",
     "test": "jest",
@@ -56,6 +56,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "compression-webpack-plugin": "^1.1.11",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
   },
   "main": "index.js",
